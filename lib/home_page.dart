@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (text) {
                   initialInv = text;
                 },
-              keyboardType: TextInputType.number,
+                keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
                 ],
@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (text) {
                   annualAddition = text;
                 },
-              keyboardType: TextInputType.number,
+                keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
                 ],
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (text) {
                   lengthofTime = text;
                 },
-              keyboardType: TextInputType.number,
+                keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
                 ],
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (text) {
                   growthRate = text;
                 },
-              keyboardType: TextInputType.number,
+                keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
                 ],
