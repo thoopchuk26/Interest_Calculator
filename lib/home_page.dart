@@ -59,6 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (text) {
                   initialInv = text;
                 },
+              keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Enter initial investment value (Eg: (\$)1000)')),
@@ -66,6 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (text) {
                   annualAddition = text;
                 },
+              keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Enter annual addition to investment (Eg. (\$)100)')),
@@ -73,6 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (text) {
                   lengthofTime = text;
                 },
+              keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Enter length of time in years (Eg: 10 (Years))')),
@@ -80,6 +92,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (text) {
                   growthRate = text;
                 },
+              keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Enter expected growth rate (Eg: 5(%))')),
