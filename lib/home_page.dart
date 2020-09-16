@@ -1,29 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:interest_calculator/graph.dart';
 import 'calculator.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String initialInv,
-      growthRate,
-      lengthofTime = '0',
-      _dropDownValue = 'Annually',
-      annualAddition;
+  String initialInv, growthRate, lengthofTime = '0', _dropDownValue = 'Annually', annualAddition;
   double finalValue = 0;
 
   void interestOutput() {
@@ -39,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Compounding Interest Calculator"),
@@ -60,30 +50,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   initialInv = text;
                 },
                 keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
+                inputFormatters: [
+                  new BlacklistingTextInputFormatter(new RegExp('[\\,|\\-]')),
                 ],
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter initial investment value (Eg: (\$)1000)')),
+                    hintText: 'Enter initial investment value (Eg: (\$)1000.00)')),
             TextField(
                 onChanged: (text) {
                   annualAddition = text;
                 },
                 keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
+                inputFormatters: [
+                  new BlacklistingTextInputFormatter(new RegExp('[\\,|\\-]')),
                 ],
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter annual addition to investment (Eg. (\$)100)')),
+                    hintText: 'Enter annual addition to investment (Eg. (\$)100.00)')),
             TextField(
                 onChanged: (text) {
                   lengthofTime = text;
                 },
                 keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
+                inputFormatters: [
+                  new BlacklistingTextInputFormatter(new RegExp('[\\,|\\-]')),
                 ],
                 decoration: InputDecoration(
                     border: InputBorder.none,
@@ -93,12 +83,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   growthRate = text;
                 },
                 keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
+                inputFormatters: [
+                  new BlacklistingTextInputFormatter(new RegExp('[\\,|\\-]')),
                 ],
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter expected growth rate (Eg: 5(%))')),
+                    hintText: 'Enter expected growth rate (Eg: 5.7(%))')),
             DropdownButton<String>(
                 value: _dropDownValue,
                 items: <String>[
@@ -126,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             FloatingActionButton(
               heroTag: 'graphBtn',
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => graph_display())),
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => graph_display('0', 0, Colors.red))),
               tooltip: 'Graph Button',
               child: Icon(Icons.assessment),
             ),
